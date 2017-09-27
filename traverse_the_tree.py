@@ -21,6 +21,27 @@ class BSTNode(Node):
             else:
                 self.right.add(new_node)
 
+    def print_postorder(self):
+        # LEFT, RIGHT, ROOT
+
+        if self.left:
+            self.left.print_postorder()
+        
+        if self.right:
+            self.right.print_postorder()
+
+        print(self.value)
+
+    def print_preorder(self):
+        
+        if self.root:
+            self.root.print_postorder()
+        
+        if self.child:
+
+    def print_inorder(self):
+        pass
+
 class BST:
     def __init__(self):
         self.root = None
