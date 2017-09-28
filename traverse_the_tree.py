@@ -12,6 +12,26 @@ class BSTNode(Node):
         self.parent = None
         self.right = None
 
+    # def is_balanced(self):
+    #     pass
+    #     left_sub_tree_height = 0
+    #     right_sub_tree_height = 0
+
+    def height(self):
+        left_sub_tree_height = 0
+        right_sub_tree_height = 0
+
+        if self.left != None:
+            left_sub_tree_height = self.left.height()
+
+        if self.right != None:
+            right_sub_tree_height = self.right.height()
+
+        if left_sub_tree_height > right_sub_tree_height:
+            max_height = left_sub_tree_height
+        else:
+            max_height = right_sub_tree_height
+
     def left_rotate(self):
         if self.right == None: return
         new_parent = self.right
