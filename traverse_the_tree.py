@@ -1,5 +1,9 @@
 import numpy.random as nprnd
 from binarytree import Node, show
+from collections import deque
+
+# deque data structure-- you can dequeue items from either side
+# deque or queue from left or right
 
 class BSTNode(Node):
     def __init__(self, value):
@@ -104,6 +108,23 @@ class BST:
         if self.root == None: return None
         if self.root.value == value: return self.root
         return self.root.find(value)
+    
+    def breadth_first_traversal(self):
+        if self.root is None:
+            return
+        queue = deque()
+        queue.append(self.root)
+
+        while (len(queue) != 0):
+            current_node = queue.popLeft()
+
+            if current_node.left != None:
+                queue.append(current_node.left)
+
+            if current_node.right != None:
+                queue.append(current_node.right)
+
+            print(current_node.value)
 
 def random_numbers(total_numbers):
     return [int(1000 * nprnd.random()) for i in range(total_numbers)]
