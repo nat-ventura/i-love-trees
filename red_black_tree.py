@@ -163,12 +163,32 @@ class RedBlackTree:
         if node == self.root:
             self.root = new_root
 
+    def fix_violations(self, violating_node):
+        if violating_node == self.root:
+            violating_node.set_color(RBNode.BLACK)
+            return
+
+        uncle = violating_node.uncle()
+        parent = violating_node.parent
+        if parent is None: return
+        grandparent = parent.parent
+
+        if uncle is None or uncle.color == RBNode.BLACK:
+            pass
+        elif uncle.color == RBNode.RED:
+            uncle.toggle_color()
+            parent.toggle_color()
+            grandparent.toggle_color()
+
+        if grandparent == self.root or (grandparent is not None and grandparent.parent.color == RBNode.RED):
+            self.fix_violations(grandparent)
+
 def random_numbers(total_numbers):
     return [int(1000 * nprnd.random()) for i in range(total_numbers)]
 
 tree = RedBlackTree()
 
-for i in random_numbers(10):
+for i in [15, 18, 13, 21]:
     print("\n\n\n")
     print("Inserting " + str(i))
     tree.add(i)
