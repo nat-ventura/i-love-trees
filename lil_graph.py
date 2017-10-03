@@ -7,8 +7,8 @@ class MyGraph:
                     'E': ['F'],
                     'F': ['C']}
 
-    def arcs(self):
-        arcCount = []
+    def arcFinder(self):
+        arcs = []
         for vertex, neighbors in self.graph:
             for n in neighbors:
                 print vertex, n
