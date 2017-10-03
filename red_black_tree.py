@@ -169,12 +169,21 @@ class RedBlackTree:
             return
 
         uncle = violating_node.uncle()
-        parent = violating_node.parent
+        # parent = violating_node.
         if parent is None: return
         grandparent = parent.parent
 
         if uncle is None or uncle.color == RBNode.BLACK:
-            pass
+            if violating_node.is_right_node() and parent.is_right_node():
+                self.left_rotate(grandparent)
+                grandparent.toggle_color()
+                parent.toggle_color()
+            elif violating_node.is_left_node() and parent.is_left_node():
+                # v
+            elif violating_node.is_left_node() and parent.
+                self.right_rotate(grandparent)
+                grandparent.toggle_color()
+                parent.toggle_color()
         elif uncle.color == RBNode.RED:
             uncle.toggle_color()
             parent.toggle_color()
@@ -188,10 +197,10 @@ def random_numbers(total_numbers):
 
 tree = RedBlackTree()
 
-for i in [15, 18, 13, 21]:
+for i in random_numbers(30):
     print("\n\n\n")
     print("Inserting " + str(i))
     tree.add(i)
-    show(tree.root)
+    show(tree.root)2
 
 show(tree.root)
