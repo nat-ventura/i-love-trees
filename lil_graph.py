@@ -9,8 +9,8 @@ class MyGraph:
 
     def arcFinder(self):
         arcs = []
-        for vertex, neighbors in self.graph:
+        for vertex, neighbors in self.graph.iteritems():
             for n in neighbors:
-                print vertex, n
+                arcs.append({vertext, n})
 
         return arcs
