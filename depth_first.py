@@ -1,5 +1,15 @@
 def depth_first_traversal(graph, start):
-    entry_array = graph[start]
+    visited = {}
+
+    for k in graph:
+        visited[k] = False
+
+    node_stack = [start]
+    visited[start] = True
+
+    while len(node_stack) != 0:
+      current_node = node_stack[len(node_stack) - 1]
+      neighbors = graph[current_node]
 
 graph = {
   "A" : ["B", "C", "D", "E"],
